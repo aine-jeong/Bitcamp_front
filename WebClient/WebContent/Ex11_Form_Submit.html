@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>개발자 필수 태그(암기)</title>
+</head>
+<body>
+<!-- 회원가입, 로그인, 게시판 글쓰기 등 -->
+
+	<h3>로그인</h3>
+	<form action="Ex11_login.jsp" method="post">
+		ID:<input type="text" name="id"><br>
+		PWD:<input type="password" name=pwd><br>
+		<input type="image" src="images/btn.png">
+		<input type="reset" value="취소하기">
+	</form>
+	<!-- 
+		form 태그는 전송을 담당하는 태그 
+		(클라이언트가 입력한 데이터를 가지고 서버에 가는 역할)
+		
+		ex.
+		네이버 > 회원가입 요청 > 회원가입 페이지를 전달받고, 
+				거기에 정보(id,pwd,주소...)를 입력한다. > 네이버(서버)에 전송
+				>네이버(서버): 전송받은 데이터 처리 (DB insert)
+				
+		form 태그 : 전송수단(운송하는 역할)
+		
+		1. 배를 타고 가는 방법 (method="get") / 목적지 (action="목적지 주소")
+		--http://localhost:8090/WebClient/Ex11_login.jsp?id=ain&pwd=1004
+		--입력한 데이터가 URL주소에 노출된다.
+		--게시판 글번호 링크
+		--<a href="boardcontent.jsp?num=100&category=board"></a>
+		
+		2. 비행기를 타고 가는 방법 (method="post")
+		--http://localhost:8090/WebClient/Ex11_login.jsp
+		--입력한 데이터가 URL주소에 노출되지 않는다.
+		>>http 프로토콜(header)안에 숨겨서 데이터를 전송
+		
+		* input type="submit" :출발하기
+		* input type="reset" :취소하기
+		
+		* input type="image" (내부적으로 전송기능을 가지고 있다.)
+		* input type="button" : 디자인만 존재한다 (별도의 함수를 호출해야 한다)
+			ㄴ> 함수 호출: 자바스크립트..
+					function sub() { document.form.submit(); }
+		
+	 -->
+</body>
+</html>

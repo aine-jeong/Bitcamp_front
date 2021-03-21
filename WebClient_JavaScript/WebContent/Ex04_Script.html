@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		/* 
+			-변수생성 >> 값입력 >> 타입 설정
+			-var a; let b; : 정의되지 않았다
+			-a = 10; b = "A" 입력 >> number, string 이라는  타입 설정
+			-ES5(모든 변수의 타입:var) >> 2015 ES6(ECMA) (let,const)
+			-var, let, const 3가지
+			-권장: let, const
+			
+			-초기화(처음 값을 갖는 것) 시점 타입 결정
+			-javascript(정수, 실수, boolean, 문자)
+			-내부적으로: Number, boolean, Array, Object ...타입
+			
+			변수(scope)
+			현재 page가 기준이다 (Ex04_Script.html)
+			1. page 전체에서 사용: 전역(global)
+			2. page 안의 함수안에서 사용: 지역(local)
+		*/
+			let num; //전역 >> 모든 함수에서 사용 가능
+			
+			function call() {
+				let name; //지역 (함수안에서)
+				name="홍길동";
+			}
+			
+			let n; //초기화
+			console.log(n); //정의되지 않았다 (undefined)
+			n = 100; 
+			console.log("n: "+n);
+			
+			//*****javascript의 전역, 지역 변수는 초기화 후에 사용해야한다.*****
+			
+			let i,j;
+			i = 200;
+			j = 300;
+			let result = i + j;
+			console.log(result);
+			
+			let intnum = 100; //정수타입
+			let dnum=12.345; //실수타입
+			let flag = true; //boolean
+			let str = null; //값이 없다 (정의되지 않은 것이랑은 다르다)
+			let str2 = "ABC"; //문자열
+			
+			console.log(typeof(intnum));
+			console.log(typeof(dnum));
+			console.log(typeof(flag));
+			console.log(typeof(str));
+			console.log(typeof(str2));
+			
+			//연산자
+			//산술(+, -, /, %)
+			var num1 = 10;
+			var num2 = 3;
+			document.write(num1/num2 + "<br>"); // 실수
+			document.write(num1%num2 + "<br>");
+			
+			//관계(==,===), !=, >=, < ...)
+			var a = 3;
+			var b = 5;
+			document.write((a == b) + "<br>")
+			document.write((a != b) + "<br>")
+			document.write((a > b) + "<br>")
+			
+			//논리(&&, ||)
+			document.write((10>5) && (1 != 3) + "<br>") // true
+			document.write((10>5) || (1 != 3) + "<br>") // true
+			
+			//삼항연산자
+			var result2 = (4%2 == 0) ? "짝수" : "홀수";
+			document.write(result2 + "<br>");
+			
+			//대입연산자(+=, -=, *=, /=)
+			let p = 10;
+			let k = 5;
+			p+=k; //p= p+k;
+			document.write("결과: " + p + "<br>")
+			
+			let x = 5+5;
+			let y = "5"+5; //(문자열) 55 (+ : 산술, 결합)
+			let z = "Hello" + 5; //Hello5
+			
+			let v = "5";
+			let v2 = 5;
+			let v3 = 5;
+			document.write((v == v2)+"<br>"); // == 값을 비교하는 연산자
+			document.write((v === v2) + "<br>"); // === 값만 같은 것이 아니라, 타입도 같아야 true >> false 나올 것
+			document.write((v2 === v3) + "<br>") // 자바랑 다른점
+			
+	</script>
+</head>
+<body>
+
+</body>
+</html>

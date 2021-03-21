@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		/* 
+			try{
+				//예외가 발생시, 예외 객체가 자동으로 생성되고, 객체의 주소가 catch에 전달된다
+				
+			} catch(Exception e) {
+				//문제 파악 가능
+			}
+			
+			javascript >> 사건이 발생시, 내부적으로 객체 생성
+			>> Event 객체 >> 객체 안에 다양한 정보가 들어있다.
+			
+			//https://cafe.naver.com/bit2021/525
+					
+			window.event.메서드
+			window.event.속성
+		*/
+		
+		window.onload = function() {
+				document.get
+				let btn = document.getElementById("mybtn");
+				btn.onclick = function(e){ //event 객체 자동 생성 >> e라는 변수 >> 객체의 주소
+					console.log(e.type); // 출력결과 >> click / 이벤트의 종류를 알 수 있다.
+					console.log(e.target); // >> <span>눌러봐</span> 
+					console.log(e.currentTarget);// >><button id="mybtn"><span>눌러봐</span></button>
+					console.log(e.x); // >>43 / 좌표값
+					console.log(e.y); // >>25 / 좌표값
+				}
+				
+				
+				let btn2 = document.getElementById("mybtn2");
+				let handler = function(event){
+					switch (event.type) {
+					case "click": alert("클릭");
+						break;
+					case "mouseover": event.target.style.backgroundColor="red";
+						break;
+					case "mouseout": event.target.style.backgroundColor="";
+						break;
+					}
+				};
+				
+				// 함수를 각각 3개 만들어서 걸어두는 것이 아니라, 하나의 함수로 사용하기
+				btn2.onclick = handler; //함수의 주소
+				btn2.onmouseover = handler;
+				btn2.onmouseout = handler;
+			}
+			
+	</script>
+</head>
+<body>
+	<button id="mybtn"><span>눌러봐</span></button>
+	<br>
+	<button id="mybtn2">눌러봐2</button>
+</body>
+</html>

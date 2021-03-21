@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title >오늘의 영화</title>
+<link>
+<link rel="stylesheet" type="text/css" href="css/cinema.css">
+<script type="text/javascript">
+let movie = [ {
+	"boxOfficeResult" : {
+		"boxofficeType" : "일별 박스오피스",
+		"showRange" : "20210317~20210317",
+		"dailyBoxOfficeList" : [ {
+			"rnum" : "1",
+			"rank" : "1",
+			"rankInten" : "0",
+			"rankOldAndNew" : "OLD",
+			"movieCd" : "20205144",
+			"movieNm" : "미나리",
+			"openDt" : "2021-03-03",
+			"salesAmt" : "174809760",
+			"salesShare" : "29.5",
+			"salesInten" : "8288180",
+			"salesChange" : "5",
+			"salesAcc" : "4982249330",
+			"audiCnt" : "20468",
+			"audiInten" : "945",
+			"audiChange" : "4.8",
+			"audiAcc" : "551837",
+			"scrnCnt" : "873",
+			"showCnt" : "2612",
+			"route" : "images/1.jpg"
+		}, {
+			"rnum" : "2",
+			"rank" : "2",
+			"rankInten" : "0",
+			"rankOldAndNew" : "OLD",
+			"movieCd" : "20200703",
+			"movieNm" : "극장판 귀멸의 칼날: 무한열차편",
+			"openDt" : "2021-01-27",
+			"salesAmt" : "158662240",
+			"salesShare" : "26.8",
+			"salesInten" : "53424300",
+			"salesChange" : "50.8",
+			"salesAcc" : "11963919890",
+			"audiCnt" : "17482",
+			"audiInten" : "6255",
+			"audiChange" : "55.7",
+			"audiAcc" : "1239366",
+			"scrnCnt" : "632",
+			"showCnt" : "1575",
+			"route" : "images/2.jpg"
+		}, {
+			"rnum" : "3",
+			"rank" : "3",
+			"rankInten" : "0",
+			"rankOldAndNew" : "NEW",
+			"movieCd" : "20216069",
+			"movieNm" : "모리타니안",
+			"openDt" : "2021-03-17",
+			"salesAmt" : "47820560",
+			"salesShare" : "8.1",
+			"salesInten" : "47820560",
+			"salesChange" : "100",
+			"salesAcc" : "51482560",
+			"audiCnt" : "5624",
+			"audiInten" : "5624",
+			"audiChange" : "100",
+			"audiAcc" : "5978",
+			"scrnCnt" : "563",
+			"showCnt" : "1266",
+			"route" : "images/3.jpg"
+		}, {
+			"rnum" : "4",
+			"rank" : "4",
+			"rankInten" : "0",
+			"rankOldAndNew" : "NEW",
+			"movieCd" : "20179942",
+			"movieNm" : "러빙 빈센트",
+			"openDt" : "2017-11-09",
+			"salesAmt" : "35281090",
+			"salesShare" : "6.0",
+			"salesInten" : "35281090",
+			"salesChange" : "100",
+			"salesAcc" : "3318166851",
+			"audiCnt" : "3884",
+			"audiInten" : "3884",
+			"audiChange" : "100",
+			"audiAcc" : "416582",
+			"scrnCnt" : "114",
+			"showCnt" : "267",
+			"route" : "images/4.jpg"
+		}, {
+			"rnum" : "5",
+			"rank" : "5",
+			"rankInten" : "-2",
+			"rankOldAndNew" : "OLD",
+			"movieCd" : "20200263",
+			"movieNm" : "라야와 마지막 드래곤",
+			"openDt" : "2021-03-04",
+			"salesAmt" : "26375860",
+			"salesShare" : "4.4",
+			"salesInten" : "-3846720",
+			"salesChange" : "-12.7",
+			"salesAcc" : "2142427900",
+			"audiCnt" : "2852",
+			"audiInten" : "-430",
+			"audiChange" : "-13.1",
+			"audiAcc" : "230054",
+			"scrnCnt" : "430",
+			"showCnt" : "737",
+			"route" : "images/5.jpg"
+		}, {
+			"rnum" : "6",
+			"rank" : "6",
+			"rankInten" : "0",
+			"rankOldAndNew" : "OLD",
+			"movieCd" : "20010083",
+			"movieNm" : "반지의 제왕 : 반지원정대",
+			"openDt" : "2001-12-31",
+			"salesAmt" : "27109100",
+			"salesShare" : "4.6",
+			"salesInten" : "5615740",
+			"salesChange" : "26.1",
+			"salesAcc" : "407305530",
+			"audiCnt" : "2185",
+			"audiInten" : "394",
+			"audiChange" : "22",
+			"audiAcc" : "33658",
+			"scrnCnt" : "149",
+			"showCnt" : "296",
+			"route" : "images/6.jpg"
+		}, {
+			"rnum" : "7",
+			"rank" : "7",
+			"rankInten" : "0",
+			"rankOldAndNew" : "NEW",
+			"movieCd" : "20216361",
+			"movieNm" : "브레이브 언더 파이어",
+			"openDt" : "2021-03-17",
+			"salesAmt" : "14007400",
+			"salesShare" : "2.4",
+			"salesInten" : "14007400",
+			"salesChange" : "100",
+			"salesAcc" : "14007400",
+			"audiCnt" : "2032",
+			"audiInten" : "2032",
+			"audiChange" : "100",
+			"audiAcc" : "2032",
+			"scrnCnt" : "178",
+			"showCnt" : "342",
+			"route" : "images/7.jpg"
+		}, {
+			"rnum" : "8",
+			"rank" : "8",
+			"rankInten" : "-4",
+			"rankOldAndNew" : "OLD",
+			"movieCd" : "20207443",
+			"movieNm" : "소울",
+			"openDt" : "2021-01-20",
+			"salesAmt" : "16560670",
+			"salesShare" : "2.8",
+			"salesInten" : "-5189660",
+			"salesChange" : "-23.9",
+			"salesAcc" : "18633995300",
+			"audiCnt" : "1754",
+			"audiInten" : "-541",
+			"audiChange" : "-23.6",
+			"audiAcc" : "2006514",
+			"scrnCnt" : "253",
+			"showCnt" : "338",
+			"route" : "images/8.jpg"
+		}, {
+			"rnum" : "9",
+			"rank" : "9",
+			"rankInten" : "0",
+			"rankOldAndNew" : "NEW",
+			"movieCd" : "20030371",
+			"movieNm" : "태극기 휘날리며",
+			"openDt" : "2004-02-05",
+			"salesAmt" : "9437700",
+			"salesShare" : "1.6",
+			"salesInten" : "9437700",
+			"salesChange" : "100",
+			"salesAcc" : "15698052200",
+			"audiCnt" : "1380",
+			"audiInten" : "1380",
+			"audiChange" : "100",
+			"audiAcc" : "2546946",
+			"scrnCnt" : "74",
+			"showCnt" : "139",
+			"route" : "images/9.jpg"
+		}, {
+			"rnum" : "10",
+			"rank" : "10",
+			"rankInten" : "-5",
+			"rankOldAndNew" : "OLD",
+			"movieCd" : "20216051",
+			"movieNm" : "리스타트",
+			"openDt" : "2021-03-11",
+			"salesAmt" : "9763640",
+			"salesShare" : "1.6",
+			"salesInten" : "-7942840",
+			"salesChange" : "-44.9",
+			"salesAcc" : "297659160",
+			"audiCnt" : "1127",
+			"audiInten" : "-915",
+			"audiChange" : "-44.8",
+			"audiAcc" : "33234",
+			"scrnCnt" : "275",
+			"showCnt" : "369",
+			"route" : "images/10.jpg"
+		} ]
+	}
+} ];
+window.onload = function(){
+	let rankList = movie[0].boxOfficeResult.dailyBoxOfficeList;
+	let cinemaIndex = 0;
+	document.getElementById("prv").onclick = function(){
+		if(cinemaIndex ==0){
+			cinemaIndex = rankList.length;
+		}
+		--cinemaIndex;
+		document.getElementById("h1-rank").innerHTML = rankList[cinemaIndex].rank+"위";
+		document.getElementById("poster").src = rankList[cinemaIndex].route;
+		document.getElementById("movieTitle").innerHTML = "<b><"+rankList[cinemaIndex].movieNm+"></b>";
+		document.getElementById("views").innerHTML = "<i>"+rankList[cinemaIndex].openDt+"에 개봉해서<br>"+rankList[cinemaIndex].audiAcc+"명의 관객이 함께했습니다.</i>";
+// 		views
+	}
+	document.getElementById("next").onclick = function(){
+		if(++cinemaIndex == rankList.length){
+			cinemaIndex=0;
+		}
+		document.getElementById("h1-rank").innerHTML = rankList[cinemaIndex].rank+"위";
+		document.getElementById("poster").src = rankList[cinemaIndex].route;
+		document.getElementById("movieTitle").innerHTML = "<b><"+rankList[cinemaIndex].movieNm+"></b>";
+		document.getElementById("views").innerHTML = "<i>"+rankList[cinemaIndex].openDt+"에 개봉해서<br>"+rankList[cinemaIndex].audiAcc+"명의 관객이 함께했습니다.</i>";
+	}
+}
+</script>
+</head>
+<body>
+	<!-- 웹페이지를 감싸는 부분, 인덱스 페이지 -->
+	<div class="wrapper indexPage">
+		<!-- 메인섹션 -->
+		<div class="mainSection">
+			<h1 id="h1-rank">1위</h1>
+			<!-- 포스터부분-->
+			<div  class="PosterContainer">
+				<img id="poster" src="images/1.jpg" alt="">
+			</div>
+			<!-- 하단 영화정보 부분 -->
+			<div class="bottomInfo">
+				<div id="movieTitle" class="cinemaTitle"><b><미나리></b></div>
+				<div id="views" class="dateNview"><i>2021-03-03에 개봉해서<br>551837명의 관객이 함께했습니다.</i></div>
+				<div class="nextprv">
+				<!-- 버튼 부분 -->
+					<button id="prv" class ="prv" style="width: 100px; height:44px">이전</button>
+					<button id="next" class ="next" style="width: 100px; height:44px">다음</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		.democlass { color:red };
+	</style>
+</head>
+<body>
+	<div id="div">
+		<h1 class="democlass">Hello World_1</h1>
+		<h1 class="democlass">Hello World_2</h1>
+		<h1 class="democlass">Hello World_3</h1>
+	</div>
+</body>
+	<script type="text/javascript">
+		//document.getElementsByTagName("h1")[0].removeAttribute("class");
+		//document.getElementsByTagName("h1"): DOM 객체모델에서 h1이라는 태그 이름을 가진 애들을 다들고오겠다
+		//[0]번째 애의 class 속성 제거
+		
+		/* let arr = document.getElementsByTagName("h1");
+		console.log(arr);
+		for(let i = 0; i < arr.length ; i++) {
+			arr[i].removeAttribute("class");
+		} */
+		
+		let arr = document.getElementsByTagName("h1");
+		/* for(let index in arr) {
+			//console.log(arr[index]);
+			console.log("index: " + index + "-length: "+arr.length); // 2,1
+			document.getElementById("div").removeChild(arr[index]);
+			//[0][1][2]
+			//[Hello World_1][Hello World_2][Hello World_3]
+		} */
+		// 동적 배열이라서, 삭제하면 길이가 계속 줄어든다.
+		// 0 지우고, 1 지우고 나니까 2번자리가 없음 -> 오류 발생
+		
+		for(let index in arr){
+			if(arr.length > 0) {
+				document.getElementById("div").removeChild(arr[arr.length-1]);
+			}
+		}
+		
+		//자기자신 삭제하기
+		let arr = document.getElementById("h1");
+		let len = arr.length; //3
+		for(let i = 0; i < len; i++) {
+			//remove() 자기자신 삭제
+			arr[arr.length -1].remove();
+		}
+		
+		
+		
+	</script>
+</html>

@@ -1,0 +1,96 @@
+   <meta charset="UTF-8">
+    <title>할일 목록 앱</title>
+    <style>
+        #add-btn{
+            padding: 5px 10px;
+            border: 0;
+            background: rgb(255, 128, 192); color: white; 
+            border-radius: 5px;
+        }
+        
+        #del-btn{
+      		padding: 5px 10px;
+            border: 0;
+            background: rgb(255, 128, 192); color: white; 
+            border-radius: 5px;
+        }
+        
+        ul{ 
+            padding: 0; 
+            list-style-position: inside;
+        }
+        li{
+            border-bottom: 1px solid #999;
+            padding: 5px 0;
+        }
+        .active{ background: #ffe6ff; } 
+        /* step3: 목록 클릭 스타일 */
+    </style>
+</head>
+<body>
+	 <h1 id='title'>할일 목록</h1>
+    <button id="add-btn">목록 추가</button>
+    
+    <button id="del-btn">목록 삭제</button>
+    
+    <ul id='list'>
+        <li>제목 1</li>
+        <li>제목 2</li>
+        <li>제목 3</li>
+        <li>제목 4</li>
+    </ul>
+</body>
+	<script type="text/javascript">
+		let title = document.getElementById("title");
+		let list = document.getElementById("list");
+		let li = document.getElementsByName("li");
+		let addbtn = document.getElementById("add-btn");
+		
+		//---
+		let delbtn = document.getElementById("del-btn");
+		//---
+		
+		function activeItem(event){ //이벤트 객체의 주소를 받겠다
+			console.log(event.target); // 콘솔로그할 때 문자열 결합하면 다른 값이 나올 수 있음 주의
+			console.log(event.currentTarget);
+			
+			if(event.target.nodeName == 'LI') {
+				title.innerHTML = event.target.innerText; // 타이틀의 내용이 list의 텍스트로 바뀐다.
+				
+				//목록의 스타일 초기화 (class 제거)
+				for(let i = 0; i < event.target.parentNode.children.length; i++) { 
+					//event.target.parentNode > ul
+					//event.target.parentNode.children > ul의 자식들 (배열)
+					
+					event.target.parentNode.children[i].removeAttribute('class');
+				}
+				
+				//현재 선택한 li에 스타일 적용
+				event.target.setAttribute('class','active');
+				
+				//내가 클릭하는 목록의 스타일을 active로 바꾼다
+				//위의 for문은 나머지에 걸려있는 active를 제거해주는 것
+				//why? 내가 클릭한 것만 스타일이 적용되어야 하니까!
+						
+						
+				//--------------
+				//목록 삭제하기
+				delbtn.addEventListener('click', function() {
+					alert("까꿍");
+				});
+			}
+		}
+		
+		list.addEventListener('click',activeItem); // 클릭했을 때 타이틀 변경 + 스타일 변경
+		
+		//목록 추가하기
+		addbtn.addEventListener('click', function() {
+			let txt = prompt('제목 입력'); //JS 내장함수
+			if(txt != null) {
+				list.innerHTML += '<li>' + txt + '</li>'   //어팬드 차일드 해도 된당~~~
+			}
+		});
+		
+		
+	</script>
+</html>

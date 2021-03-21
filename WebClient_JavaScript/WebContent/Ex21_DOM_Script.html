@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	//appendChild() : 한 노드를 특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙인다.
+	//만약 주어진 노드가 이미 문서에 존재하는 노드를 참조하고 있다면, 
+	//appendChild()메소드는 노드를 현재 위치에서 새로운 위치로 이동시킨다.
+	window.onload = function() {
+		let pele = document.createElement("p");
+		let hele = document.createElement("hr");
+		let h3ele = document.createElement("h3");
+		
+		let textnode = document.createTextNode("Hello world");
+		let divele = document.createElement("div");
+		let textnode2 = document.createTextNode("HI HI HI");
+		
+		hele.setAttribute("title", "수평선");
+		
+		h3ele.appendChild(textnode);
+		
+		divele.appendChild(textnode2);
+		
+		document.body.appendChild(pele).appendChild(divele);
+		//<body><p><div>HI HI HI</div></p></body>
+		
+		document.body.appendChild(hele);
+		//<body><p><div>HI HI HI</div></p><hr title="수평선"></body>
+		
+		document.body.appendChild(h3ele);
+		//<body><p><div>HI HI HI</div></p><hr title="수평선"><h3>Hello world</h3></body>
+	}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

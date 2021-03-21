@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		//function call(){}
+		//myFun = function(){}
+		
+		//function(){} : 익명함수 (이름이 없다)
+		//일반적으로, 함수는 필요할 때 몇번이고 재호출한다.
+		
+		//callback함수 (프로그램 논리(로직)에 의해서 자동으로 호출되는 함수.)
+		//function aa(){} >> setInterval(aa(),1000) 도 가능
+		//but, 만든 함수가 다른 곳에서 쓰일일이 없고, 의도한 위치에만 사용하는 경우에 익명함수로 만드는 것.
+		//아래 코드 = 1초마다 function을 재호출한다.
+		var myTime = setInterval(function(){
+			let d = new Date();
+			let t = d.toLocaleTimeString();
+			document.getElementById("time").innerHTML = t;
+			// 아이디가 time인 것을 가져오겠다
+		},1000);
+		
+		//myTime --- setInterval
+		function myTimeStop(){
+			window.clearInterval(myTime);
+		}
+		
+	</script>
+</head>
+<body>
+		<p id="time"></p>
+		<button onclick="myTimeStop()">stop</button>
+</body>
+</html>

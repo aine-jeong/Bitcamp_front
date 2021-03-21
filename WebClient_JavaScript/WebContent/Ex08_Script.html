@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		/* 
+			유효성 검증 - 검증을 누가하는가?
+			사이트 접속(biit.or.kt) >> 회원가입 버튼 클릭 >> 회원가입 화면이 보인다.
+			1.
+			client >> 회원가입에 필요한 데이터 입력(id, pwd) >> 서버로 전송 
+				   >> 서버가 값을 받는다 >> 검증을 서버가 한다. >> 다시 클라이언트에게 응답
+			2.
+			client >> 회원가입에 필요한 데이터 입력(id, pwd) >> 서버로 전송하지 않음
+				   >> JavaScript가 검증 >> 검증이 끝나면 서버로 전송
+			
+			# 글자의 길이나, 특수문자 표기 등의 정규식 검사
+			1번: 서버 접속 횟수 증가(네트워크 트래픽 증가(라운드 트림) = 통신 횟수가 증가한다) -> 좋지 않은 방법
+			클라이언트에서 할 수 있는 모든 검증은 클라이언트 브라우저에서 처리하자.
+			
+			# ID 중복 검사(서버와 통신할 필요가 o)
+		*/
+		
+		function send(){
+				//유효성 검증 후 문제가 없다면 서버로 전송하도록 하기
+				//문제가 있다면, 재입력 요청
+				
+				//1. 요소(Element)의 정보를 가지고 와야 한다.
+				//var ele = document.form[0].elements[0].value ...
+				//최종적으로는 DOM을 사용할 것.. 지금은 DOM안배웠으니까 그냥 해봅시당
+				let inputuserid = document.loginform.txtuserid;
+				//inputuserid = <input type="text"     name="txtuserid">
+				console.log(inputuserid);
+				console.log(inputuserid.value);
+				
+				//DOM을 사용한다면, 태그의 식별자가 id여야 한다.
+				//DOM방식
+				let userpwd = document.getElementById("txtpwd");
+				console.log(userpwd);
+				console.log(userpwd.value);
+				
+				//검증 로직 ex
+				//1. 입력 헀는지
+				//2. 입력한 값이 로직에 맞는지
+				if(inputuserid.value == "" || !(inputuserid.value.length >= 3 && inputuserid.value.length <= 10)) {
+					alert("다시 입력하세요.");
+					document.loginform.txtuserid.focus();
+					inputuserid.select(); // 선택(블럭)
+				} else { // 검증 완료
+					alert("완료");
+					//서버로 전송
+					//form action = "주소" method=""
+					
+					document.loginform.action="Ex08_login.jsp";
+					document.loginform.submit(); // form태그에 내장되어있는 (전송)함수
+				}
+			}
+		
+	</script>
+</head>
+<body>
+	<form action="" method="get" name="loginform">
+			ID: <input type="text"     name="txtuserid">
+			PWD:<input type="password" name="txtpwd"  id="txtpwd">
+			<input type="button" value="전송" onclick="send()">
+		<!-- 
+			서버로 전송할 수 있는 타입
+			type="submit"
+			type="image"
+			type="button" onclick="전송을 처리하는 함수" 
+			// 내부적으로 submit기능이 없기 때문에, submit기능이 있는 함수를 만들어서 설정해줘야 한다.
+		 -->
+	
+	</form>
+</body>
+</html>

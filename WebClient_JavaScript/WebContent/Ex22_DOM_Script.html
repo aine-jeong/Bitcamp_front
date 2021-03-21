@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			let btnobj = document.getElementById("btnGetData");
+			//이벤트 처리 >> 동적 처리
+			//<input type="button" onclick="">  : 좋은 방법이 아니다.
+			
+			btnobj.onclick = function(){ //객체가 가지고 있는 이벤트에 함수를 달아준 것
+				let txtmsg = document.getElementById("txtmessage");
+			let str="";
+			str += "ID: " + txtmsg.getAttribute("id"); //input 태그의 id 속성값을 가져오기
+			str += "\n value : " + txtmsg.getAttribute("value");
+			str += "\n value : " + txtmsg.value; //바로 윗줄과 같은 것
+			str += "\n length: " + txtmsg.value.length;
+			
+			console.log(str);
+			}
+			
+			document.getElementById("btnCreate").onclick = function(){
+				let txtname = document.createElement("input");//<input>
+				txtname.setAttribute("type", "text") //<input type="text">
+				txtname.setAttribute("id", "txtbox");
+				txtname.setAttribute("value", "홍길동");
+				
+				document.body.appendChild(txtname);
+				// 제일 잘 짠 코드 -> 구조에 손을 대지 않는 것! (인라인 방식은 최대한 사용하지 말자)
+			}
+			
+		}
+	
+	</script>
+</head>
+<body>
+	<input type="text" value="hello" id="txtmessage">
+	<input type="button" value="getinfo" id="btnGetData">
+	<hr>
+	<input type="button" value="동적생성" id="btnCreate">
+</body>
+</html>

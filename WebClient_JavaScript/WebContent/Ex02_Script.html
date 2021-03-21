@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	//javascript 해석 > 웹 브라우저 (해석+다양한 객체 제공)
+	//내장 객체 (브라우저가 가지고 있는 자원들) >> window객체
+	window.document.write("방가방가<br>");
+
+	//window 객체 생략 가능
+	document.write("window객체 생략 가능<br>");
+
+	console.log("디버깅, 결과 미리보기, 오류메세지 확인");
+	console.log(10 + 10);
+
+	document.write("<b>hello world</b>");
+	document.write('<table border="1">');
+	document.write('<tr><td>aa</td><td>bb</td><tr>');
+	document.write("</table>");
+	
+	//var, let, const
+	
+	var num; // 타입이 정해지지 않아용
+	let num2;
+	
+	console.log(num); //undefined -> 정의되지 않았으니 출력되지 않음
+	num=100; // 타입이 숫자로 설정된다. (내부적으로 number)
+	console.log("num: "+num);
+	console.log(typeof(num)); // number
+	
+	//##POINT##
+	// JavaScript는 순서대로 실행된다!!
+	
+	/* var ele = window.document.forms[0].elements[0];
+	console.log(ele);
+	//Ex02_Script.html:36 Uncaught TypeError: Cannot read property 'elements' of undefined */
+	
+	//순서에 상관없이 프로그래밍 하고싶을 때 ..?
+	//함수를 생성 > 함수는 순서대로 실행되는 것이 아니라 이름이 불렸을때 실행되니까!
+	function data(){
+		var ele = window.document.forms[0].elements[0];
+		console.log(ele);
+	}
+	
+	
+</script>
+
+</head>
+<body>
+		<form action="#" method="get" name="myform">
+			<input type="text" name="userid" value="hong"><br>
+			<input type="password" name="pwd" value="1004"><br>
+			<input type="submit" value="전송"><br>
+			
+		</form>
+		<input type="button" value="클릭해봐" onclick="data()">
+</body>
+
+<script type="text/javascript">
+	var ele = window.document.forms[0].elements[0];
+	console.log(ele);
+	//ele 변수 -> <input type="text" name="userid" value="hong"><br>
+	//객체를 담고 있다 (태그 객체)
+	console.log(ele.value);
+	console.log(ele.value.length);
+	
+	var value = window.document.myform.userid.value;
+	console.log("타입: " + typeof(value)); //String
+	
+	//함수안에서 처리 ... 그 함수를 호출하는 방법이 맞는 방법
+	if(value.length < 5) {
+		alert("다시 입력하세요");
+		ele.value="";
+	}
+	
+</script>
+</html>

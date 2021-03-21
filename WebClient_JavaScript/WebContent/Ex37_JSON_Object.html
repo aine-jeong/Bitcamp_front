@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>##KEY POINT##</title>
+	<script type="text/javascript">
+		//1. JS 배열: [] // let arr = []; / push, pop 이용
+		//2. JSON 객체: {} // elt obj = {}; obj.속성명, obj.함수명
+		
+		//우리가 원하는 데이터는 단순하지 않다
+		//날씨, 영화정보, 지하철 정보 데이터 등등 에서 원하는 정보 추출
+		//데이터는 객체와 객체, 객체 안에 배열, 배열 안에 객체 혼재되어있다..
+		//Car[] car = {new Car()}
+		
+		let students=[];
+		students.push({이름:"홍길동",국어:80,영어:60});
+		students.push({이름:"아무개",국어:100,영어:50});
+		students.push({이름:"유한솔",국어:10,영어:3});
+		
+		//[{}{}{}]
+		//기존에 만들어진 객체에 함수 추가
+		for(let index in students) {
+			//students[index] > {} > add
+			students[index].getSum = function(){return this.국어 + this.영어;}
+			students[index].getAvg = function(){return this.getSum()/2;}
+		}
+		
+		console.log(students);
+		
+		for(let index in students) {
+			console.log(students[index].이름);
+			console.log("총점: " + students[index].getSum());
+			console.log("평균: " + students[index].getAvg());
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

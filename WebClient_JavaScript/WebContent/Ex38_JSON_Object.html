@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		let myObj = {name:"john", age:30, city:"seoul"};
+		console.log(myObj);
+		
+		//객체 데이터를 문자열 데이터로 변환 가능
+		//login.jsp?name=john&age=30&city=seoul
+		let Stringobj = JSON.stringify(myObj); //POINT
+		console.log(Stringobj); 
+		console.log(typeof(Stringobj)); //>>string
+		
+		//[문자열 데이터]를 [객체 데이터] (단 조건 ... 구조)
+		let myObj2 = '{"name":"john", "age":30, "city":"seoul"}'
+		console.log(typeof(myObj2)); //>>string
+		let myjson = JSON.parse(myObj2);
+		console.log(typeof(myjson)); //>>object
+		
+		//POINT
+		console.log(myjson.name); //객체, 속성명 >> john
+		console.log(myjson["name"]); //객체["속성명"] >> john
+		
+		/* 
+		확장자
+		HTML 		> index.htm, index.html
+		CSS 		> common.css
+		JavaScript  > common.js
+		JSON		> common.json >> MIME타입 > 문서의 타입이 application/json으로 나온다
+		xml			> common.xml
+		
+		*/
+		
+		let myCars;
+		myCars = {
+			"name":"john",
+			"age":30,
+			"cars":[
+						{"name":"Ford","model":["Fiesta","Focus","Mustang"]},
+						{"name":"BMW","model":["320","x3","x5"]},
+						{"name":"Fiat","model":["500","Panda"]}
+					]
+		
+		}
+		//차량 이름, 모델명 추출
+		//Ford - Fiesta Focus Mustang
+		//BMW - 320 x3 x5
+		//Fiat - 500 Panda
+		//개선된 for문 이용해서 해보세요
+		
+		for(let index in myCars.cars) {
+			//console.log(myCars.cars[index]); // 배열
+			document.write("차량이름: " + myCars.cars[index].name + " / ");
+			for(let i in myCars.cars[index].model) {
+				document.write("차량모델: " + myCars.cars[index].model[i] + "  ");
+			}
+			document.write("<br>");
+		}
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

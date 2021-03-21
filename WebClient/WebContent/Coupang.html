@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>레이아웃</title>
+<style type="text/css">
+/* body { background: #FFE8DF; } */
+
+body {
+	background: #2b5876;
+	background: -webkit-linear-gradient(to right, #4e4376, #2b5876);
+	background: linear-gradient(to right, #4e4376, #2b5876);
+
+		/* background-image: url('images/back.jpg'); */
+		/* background-repeat: no-repeat; */
+		
+	}
+	
+/* body::after {
+	width: 100%;
+	height: 100%;
+	background-image: url('images/back.jpg');
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	opacity: 0.5;
+} */
+
+#menubar div {
+	margin-top: 10px;
+	width: 90px;
+	height: 20px;
+	padding: 10px 5px; /* 가로90, 내부여백 상하10 좌우5 */
+	float: left;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	background: black;
+	font-family: 'Nanum Myeongjo', serif;
+}
+#menubar div:hover {
+	background: #4e4376;
+	color: white;
+}
+
+
+</style>
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<!-- margin: auto -> 가운데 위치하도록 함 -->
+	<div id="wrap" style="width: 600px; margin: auto;">
+		<!-- 가로크기는 위의 div에서 상속받는다 -->
+		<div id="header" align="center"
+			style="height: 50px; background: white; padding: 10px; color: #4e4376; font-family: 'Black Han Sans', sans-serif;
+			font-size: 40px;">
+			<div style="line-height: 60px">시가총액 4조</div>
+		</div >
+		<div id="menubar">
+			<div>홈</div>
+			<div>회원가입</div>
+			<div>      </div>
+			<div>      </div>
+			<div>      </div>
+			<div>      </div>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="main"
+			style="height: 100%; width: 600px; background: white; margin-top: 10px;">
+			
+			<div style="display: inline-block; padding-left: 30%;">
+			
+			<div class="member-join _joinRoot"
+							data-join='{ "isDomestic": "true", "rtnUrl": "", "isApp": "false", "skipWelcome": "N", "uuid": "", "recommendationJoinToken": "","channel": "","coupangAppHeader": "" }'>
+							<div class="section-title">회원정보를 입력해주세요</div>
+							<input type="hidden" id="isStrongerPasswordTarget" value="true">
+							<div class="join__content">
+								<div class="section-body">
+									<div class="member__field-wrap">
+										<div class="member__input-field">
+											<label
+												class="member__input-wrap _joinEmailInputStatusTarget member__input-wrap-v2"
+												for="join-email-input"> <span
+												class="member__input-group member__input-group--icon-label">
+													<i class="join__sprite join__sprite--email"></i>
+											</span> <span
+												class="member__input-group member__input-group--validator _joinEmailValid"
+												style="display: none;"> <i
+													class="join__sprite join__sprite--valid"> </i>
+											</span> <span class="member__input-group"> <input
+													type="email" class="member__input _joinEmailInput"
+													maxlength="80" id="join-email-input" value=""
+													placeholder="아이디(이메일)" /><span
+													class="member__input-area__overlap-label _joinEmailLabel"
+													style="display: none;">아이디(이메일)</span>
+											</span>
+											</label>
+										</div>
+										<div class="member__expand-field _joinEmailExpand"
+											style="display: none;"></div>
+									</div>
+									<div class="member__field-wrap">
+										<div class="member__input-field  member__input__password">
+											<label
+												class="member__input-wrap _joinPasswordInputStatusTarget member__input-wrap-v2"
+												for="join-password-input" data-ab-test="false"> <span
+												class="member__input-group member__input-group--icon-label">
+													<i class="join__sprite join__sprite--password"></i>
+											</span> <span id="__join__password__valid"
+												class="member__input-group member__input-group--validator _joinPasswordValid"
+												style="display: none;"> <i
+													class="join__sprite join__sprite--valid"></i>
+											</span>
+												<div
+													class="member__input-group __display__password__wrapper">
+													<input type="password"
+														class="member__input _joinPasswordInput"
+														data-stronger-password-target="true"
+														placeholder="비밀번호(영문 숫자 특수문자 2가지 이상 6~15자 이내)"
+														id="join-password-input" value="" maxlength="20"
+														placeholder="비밀번호 확인"> <span
+														class="member__input-area__overlap-label _joinPasswordLabel"
+														style="display: none;">비밀번호</span> <span
+														class="expose__password__wrapper" id="exposed__password"></span>
+												</div>
+											</label>
+											<div class="member__expand-field _joinPasswordExpand"
+												style="display: block;"></div>
+										</div>
+									</div>
+									<div class="member__field-wrap">
+										<div class="member__input-field">
+											<label
+												class="member__input-wrap _joinPasswordAgainInputStatusTarget member__input-wrap-v2"
+												for="join-password-again-input"> <span
+												class="member__input-group member__input-group--icon-label">
+													<i class="join__sprite join__sprite--password-confirm"></i>
+											</span> <span
+												class="member__input-group member__input-group--validator _joinPasswordAgainValid"
+												style="display: none;"> <i
+													class="join__sprite join__sprite--valid"></i>
+											</span> <span class="member__input-group"> <input
+													type="password"
+													class="member__input _joinPasswordAgainInput"
+													id="join-password-again-input" value="" maxlength="20"
+													placeholder="비밀번호 확인"><span
+													class="member__input-area__overlap-label _joinPasswordAgainLabel"
+													style="display: none;">비밀번호 확인</span>
+											</span>
+											</label>
+										</div>
+										<div class="member__expand-field _joinPasswordAgainExpand"
+											style="display: none;"></div>
+									</div>
+									<div class="member__field-wrap">
+										<div class="member__input-field">
+											<label
+												class="member__input-wrap _joinNameInputStatusTarget member__input-wrap-v2"
+												for="join-name-input"> <span
+												class="member__input-group member__input-group--icon-label">
+													<i class="join__sprite join__sprite--name"></i>
+											</span> <span
+												class="member__input-group member__input-group--validator _joinNameValid"
+												style="display: none;"> <i
+													class="join__sprite join__sprite--valid"></i>
+											</span> <span class="member__input-group"> <input type="Name"
+													class="member__input _joinNameInput" id="join-name-input"
+													maxlength="40" value="" placeholder="이름"> <span
+													class="member__input-area__overlap-label _joinNameLabel"
+													style="display: none;">이름</span>
+											</span>
+											</label>
+										</div>
+										<div class="member__expand-field _joinNameExpand"
+											style="display: none;"></div>
+									</div>
+									<div class="member__field-wrap">
+										<div class="member__input-field">
+											<label
+												class="member__input-wrap _joinPhoneInputStatusTarget member__input-wrap-v2"
+												for="join-phone-input"> <span
+												class="member__input-group member__input-group--icon-label">
+													<i class="join__sprite join__sprite--phone"></i>
+											</span> <span
+												class="member__input-group member__input-group--validator _joinPhoneValid"
+												style="display: none;"> <i
+													class="join__sprite join__sprite--valid"></i>
+											</span> <span class="member__input-group"><input
+													type="hidden" value="82" data-code="82"
+													class="phone-country-select _phoneCountryCode"> <input
+													type="tel"
+													class="member__input _joinPhoneInput _phoneNumber"
+													id="join-phone-input" value="" autocomplete="off"
+													placeholder="휴대폰 번호"> <span
+													class="member__input-area__overlap-label _joinPhoneLabel"
+													style="display: none;">휴대폰 번호</span> </span>
+											</label>
+										</div>
+										<div class="member__expand-box _joinPhoneAuthRoot"
+											style="display: none;">
+											<div class="join__phone-cert">
+												<span
+													class="member__input-wrap member__input-wrap--small _joinPhoneAuthInputStatusTarget">
+													<input type="number"
+													class="member__input member__input--small _joinPhoneAuthInput _phoneAuthNumber">>
+												</span>
+												<div class="join__phone-cert__util">
+													<button type="button"
+														class="join__button join__button--fix-extra-small-gray _joinPhoneAuthResendTrigger">재전송</button>
+													<button type="button"
+														class="join__button join__button--fix-extra-small-blue _joinPhoneAuthTrigger">인증</button>
+												</div>
+											</div>
+											<div class="join__phone-cert__expand _joinPhoneAuthExpand"
+												style="display: none;"></div>
+										</div>
+										<div class="member__expand-field _joinPhoneExpand"
+											style="display: none;"></div>
+										<input type="hidden" class="_joinPhoneAuthHiddenNumberInput">
+									</div>
+								</div>
+							</div>
+							<input type="hidden" id="join-ab-target__ct_confirm" value="B" />
+							<div id="c-jointerms" class="jointerms"></div>
+							<div class="join__footer _joinTriggerRoot">
+								<button type="button"
+									class="join__button join__button--blue-large-block _joinTrigger"
+									disabled>동의하고 가입하기</button>
+							</div>
+							<div class="join__agree-terms _joinAgreeTermsRoot dn">
+								본인은 <strong>만 14세 이상</strong>이며, <a
+									class="join__agree-link _joinTermsTrigger"
+									href="#join-terms-service">쿠팡 이용약관</a>, <a
+									class="join__agree-link _joinTermsTrigger"
+									href="#join-terms-commerce">전자금융거래이용약관</a>, <a
+									class="join__agree-link _joinTermsTrigger"
+									href="#join-terms-privacy-collect-use">개인정보 수집 및 이용</a>, <a
+									class="join__agree-link _joinTermsTrigger"
+									href="#join-terms-privacy-offered">개인정보 제공</a> 내용을 확인 하였으며, <strong>동의합니다.</strong>
+								<div
+									class="join__terms-box join__terms-box--text-area _joinTermsTarget"
+									style="display: none;" id="join-terms-service">[ 쿠팡 이용 약관
+									]</div>
+								<div
+									class="join__terms-box join__terms-box--text-area _joinTermsTarget"
+									style="display: none;" id="join-terms-privacy-offered">□
+									개인(신용)정보 제공 동의</div>
+							</div>
+						</div>
+		</div>
+		</div>
+		<div class="member-footer"
+			style="margin-top: 10px; background: white; height: 100%;">
+			
+	        ©BIT Team4 Corp. All rights reserved.
+	   
+			
+			</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>레이아웃</title>
+
+<style type="text/css">
+/* body { background: #ffe8df; } */
+body {
+	background: #FC5C7D;
+	background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);
+	background: linear-gradient(to right, #6A82FB, #FC5C7D);
+}
+
+#menubar div {
+	margin-top: 10px;
+	width: 90px;
+	padding: 10px 5px; /* 가로90, 내부여백 상하10 좌우5 */
+	float: left;
+	text-align: center;
+	font-size: 13px;
+	font-weight: bold;
+	color: white;
+	background: #f99c77;
+}
+
+#menubar div:hover {
+	background: #bd633f;
+	color: white;
+}
+</style>
+</head>
+<body>
+	<!-- margin: auto -> 가운데 위치하도록 함 -->
+	<div id="wrap" style="width: 600px; margin: auto;">
+		<!-- 가로크기는 위의 div에서 상속받는다 -->
+		<div id="header" align="center"
+			style="height: 50px; background: white; padding: 10px; color: #660000; font-family: Cooper;">
+			<br>My name is Ain
+		</div>
+
+		<div id="menubar">
+			<div>메뉴1</div>
+			<div>메뉴2</div>
+			<div>메뉴3</div>
+			<div>메뉴4</div>
+			<div>메뉴5</div>
+			<div>메뉴6</div>
+		</div>
+
+		<div style="clear: both;"></div>
+		<div id="main"
+			style="height: 300px; width: 600px; background: white; margin-top: 10px; border-radius: 1em;">
+
+			<div
+				style="width: 400px; height: 200px; text-align: center; line-height: 200px; margin: 0 auto;">
+				<img src="images/미모지누끼.png"
+					onmouseover="this.src='images/미모지누끼2.png';"
+					onmouseout="this.src='images/미모지누끼.png';"
+					style="width: 100px; height: 100px; vertical-align: middle">
+
+
+
+				<span style="color: #660000; font-family: Georgia; font-size: 30px">
+					Nice meet u &#x1F633;</span> <br>
+			</div>
+
+		</div>
+
+		<div id="footer"
+			style="height: 50px; margin-top: 10px; background: white;"></div>
+
+	</div>
+</body>
+</html>

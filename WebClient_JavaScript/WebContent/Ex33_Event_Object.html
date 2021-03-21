@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="Ex33.jsp" id="frm">
+		<fieldset>
+			<legend>주소록</legend>
+			<textarea rows="10" cols="30" name="txt" id="txt"></textarea>
+			<input type="submit" id="sub" value="전송하기">
+		</fieldset>
+	</form>
+</body>
+	<script type="text/javascript">
+		let add = ["아무개","email: abc@naver.com"];
+		
+		let frm = document.getElementById("frm");
+		
+		function addr_Search(event){
+			console.log(event.type);
+			
+			let textarea = frm.txt;
+			textarea.value = "이름/주소\n";
+			textarea.value += add[0] + "/" + add[1] + "\n";
+		}
+		
+		//POINT
+		frm.addEventListener('submit',function(event){
+			event.preventDefault(); // 기본 이벤트 해제 (<a>, <submit> 등에 사용)
+			//만약 해당 함수를 걸지 않으면 submit이 원래 가지고 있는 이벤트(서버로 전송)가 진행되기 때문에
+			//서버로 이동된다.
+			// 전송 막기 (얘가 가진 default 이벤트를 막는다~!~!~!)
+			
+			addr_Search(event);
+		});
+		
+		
+	</script>
+</html>
