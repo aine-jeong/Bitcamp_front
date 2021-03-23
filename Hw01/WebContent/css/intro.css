@@ -4,10 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hi+Melody&family=Pacifico&display=swap');
 
+/* SweetAlert 오버레이 */
 .swal-overlay {
  background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* SweetAlert 글씨체 */
 .swal-text {
  display: block;
  text-align: center;
@@ -36,12 +38,6 @@
 	background-size: 100% 100%;
 }
 
-/* #header  {	position: absolute;
-			width: 1400px;
-			height: 400px;
-			
-			backgrgb(0, 0, 0)0, 0)0, 0)url("	../images/main.png");
-			mix-blend-mode: multiply;} */
 #header_box {
 	position: absolute;
 	width: 1000px;
@@ -65,13 +61,7 @@
 	color: #FFFFFF;
 	text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
-/* 
-#nav {
-	background: black;
-	width: 1000px;
-	margin: 0 auto;
-}
- */
+
 #content {
 	height: 800px;
 	line-height: 800px;
@@ -145,10 +135,13 @@
 
 
 /* contents */
+
+/* 컨텐츠박스 위 여백공간 */
 .space {
-	height:150px;
+	height:170px;
 }
 
+/* 미모지 위치 세팅 */
 .draggable-elements {
 	display: flex;
 	justify-content: center;
@@ -158,16 +151,19 @@
 	margin: 10px;
 }
 
+/* 미모지 사이즈 세팅 (img의 src 중 png로 끝나는 것들에 속성 추가) */
 img[src$="png"] {
 	width: 170px;
     height: 170px;
 }
 
+/* 사이즈 조정 */
 #bsh {
 	width: 150px;
 	height: 150px;
 }
 
+/* 드랍박스 디자인 */
 #here {
     width: 250px;
     height: 250px;

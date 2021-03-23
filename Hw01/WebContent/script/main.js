@@ -1,7 +1,3 @@
-
-let main_intro = document.getElementById("more");
-main_intro.onclick = learn_more;
-
 function more() {
 			swal({
 				title: "앗, 그런데 LA는 아직 안가봤습니다.",
@@ -16,14 +12,8 @@ let learn_more = function(event) {
 	}
 }
 
-let Hamburger = document.getElementById("Hamburger");
-Hamburger.onclick = yet();
-
-let ham_yet = function(event) {
-	switch (event.type){
-		case "click": yet();
-	}
-}
+let main_intro = document.getElementById("more");
+main_intro.onclick = learn_more;
 
 function yet() {
 	swal({
@@ -32,3 +22,12 @@ function yet() {
 		button: "ok"
 		});
 }
+
+let ham_yet = function(event) {
+	switch (event.type){
+		case "click": yet();
+	}
+}
+
+let Hamburger = document.getElementById("Hamburger");
+Hamburger.onclick = ham_yet;

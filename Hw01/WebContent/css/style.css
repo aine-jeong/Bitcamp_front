@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Hi+Melody&family=Pacifico&display=swap');
 
+/* SweetAlert 오버레이 */
 .swal-overlay {
  background-color: rgba(43, 165, 137, 0.45);
 }
@@ -19,6 +20,7 @@
 	color: #f2f2f2;
 }
 
+/* 헤더 */
 #header_img {
 	margin: 0 auto;
 	height: 300px;
@@ -27,19 +29,12 @@
 	background-size: 100% 100%;
 }
 
-/* #header  {	position: absolute;
-			width: 1400px;
-			height: 400px;
-			
-			backgrgb(0, 0, 0)0, 0)0, 0)url("	../images/main.png");
-			mix-blend-mode: multiply;} */
 #header_box {
 	position: absolute;
 	width: 1000px;
 	height: inherit;
 	background: rgba(0, 0, 0, 0.5);
 	mix-blend-mode: normal;
-	/* opacity: 0.6; */
 	box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
 	margin: 0 auto;
 	position: relative;
@@ -56,13 +51,8 @@
 	color: #FFFFFF;
 	text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
-/* 
-#nav {
-	background: black;
-	width: 1000px;
-	margin: 0 auto;
-}
- */
+
+/* 컨텐츠 영역 */
 #content {
 	height: 800px;
 	line-height: 800px;
@@ -80,6 +70,7 @@
 	box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
 }
 
+/* 푸터영역 */
 #footer {
 	height: 220px;
 	line-height: 220px;
