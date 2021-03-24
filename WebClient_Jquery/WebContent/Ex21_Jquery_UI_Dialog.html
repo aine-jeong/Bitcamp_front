@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- 필수 -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!--  Jquery  UI (js 파일(함수) , css 파일)  -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+	<link rel="stylesheet"
+		href="//code.jquery.com/ui/1.12.1/themes/Vader/jquery-ui.css">
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$('#event_date').datepicker(
+					{dateFormat: "yy년mm월dd일"}	
+				);
+					
+				$('#dialog').dialog(
+						{
+							autoOpen: false,
+							show:{effect:"blind",duration:2000},
+							hide:{effect:"explode",duration: 1000},
+							buttons: {
+										"submit": function(){
+											let eventname = $('#event_name').val(); //getter
+											let eventdate = $('#event_date').val();
+											//해당 내용을 부모창에 전달... (실제로 부모창은 아님 ..)
+											
+											// jquery에 태그를 풀네임으로 적으면 해당 태그를 생성하는 것
+											$('<h3></h3>').html(eventname + " : " + eventdate).appendTo('#output');
+											//<h3>소풍 : 2021년3월21일</h3> 만들어서 div에 append
+											$('#dialog').dialog("close");
+										},
+										
+										"reset": function(){
+											 $('#event_name').val(""); //입력값을 빈문자열로 초기화
+											 $('#event_date').val("");
+										},
+										
+										"cancel": function(){
+											$('#event_name').val(""); //입력값을 빈문자열로 초기화
+											$('#event_date').val("");
+											$('#dialog').dialog("close");
+										}
+									},
+							//resizable: false, //사이즈 조절 못하게하기
+							modal: true //###팝업창을 닫기 전까지는 부모창에 대한 접근 불가### 
+						}		
+					);
+					
+					$('#open_button').click(function(){
+						$('#dialog').dialog("open"); //autoOpen: true
+					});
+					
+			  } );
+			
+			
+	</script>
+</head>
+<body>
+	<h3 id="open_button">🐰일정생성🐰</h3>
+	<hr>
+	<div id="output">
+	
+	</div>
+	
+	<!-- PopUp div -->
+	<div id="dialog" title="일정관리">
+		<h3>일정 만들기</h3>
+		<label for="event_name">일정이름</label>
+		<input type="text" id="event_name">
+		<br>
+		<label for="event_date">날짜</label>
+		<input type="text" id="event_date">
+		<br>
+	</div>
+</body>
+</html>

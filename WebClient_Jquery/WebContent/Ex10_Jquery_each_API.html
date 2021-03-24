@@ -237,64 +237,8 @@
            ]
    }
    //목적 : 라쿤 이미지만 출력
-   //console.log(data);
-   /*
-   console.log(data.items);
-   //[{},{},{}]  20개의 객체
-   var itemlist = data.items;
-   for(let index in itemlist){
-      let obj = itemlist[index];
-      // obj  {}
-      let objm = obj.media;
-      console.log(objm.m);
-      document.write("<img src='" + objm.m + "'><br>");
-   }
-   */
    
-   /*
-   for(let index in data.items){
-      let img = data.items[index].media.m;
-      document.write("<img src='" + img + "'><br>");
-   }
-   */
-   //Ex29_DOM_Quiz 참고로 해서
-   //이미지 슬라이드를 만들어 보세요
-   /*
-   var imgIdx = 0;
-   window.onload = function()
-   {
-      var myphotos= [];
-      var itemList = data.items;
-      for( var index in itemList)
-      {
-         var media = itemList[index].media; //media객체
-         myphotos.push (media.m);
-      }
-
-      document.getElementById("imgs").src = myphotos[0];
-      
-      document.getElementById("next").onclick = function()
-      {
-         
-         if( ++imgIdx == myphotos.length)
-         {
-            imgIdx = 0;
-         }
-         document.getElementById("imgs").src = myphotos[imgIdx];
-      }
-      
-      document.getElementById("prv").onclick = function()
-      {
-         if( imgIdx ==0)
-         {
-            imgIdx =  myphotos.length-1;
-         }
-         document.getElementById("imgs").src = myphotos[--imgIdx];
-      }
-   }
-   */
-   //위 코드를 Jquery 변환하세요
-   var imgIdx = 0;
+   /* var imgIdx = 0;
    $(document).ready(function() {
       var myphotos = [];
       var itemList = data.items;
@@ -320,7 +264,27 @@
       });
   	 
       
-    });
+    }); */
+   
+   var imgIdx = 0;
+	$(document).ready(function() {
+		var myphotos= $.map(data.items, (element, index) => {return element.media.m});
+		$('#imgs').attr('src', myphotos[0]);
+		$('#next').click(() => {
+			if( ++imgIdx == myphotos.length)
+			{
+				imgIdx = 0;
+			}
+			$('#imgs').attr('src', myphotos[imgIdx]);
+		});
+		$('#prv').click(() => {
+			if( imgIdx ==0)
+			{
+				imgIdx =  myphotos.length-1;
+			}
+			$('#imgs').attr('src', myphotos[--imgIdx]);
+		});
+   });
    </script>
 </head>
 <body>

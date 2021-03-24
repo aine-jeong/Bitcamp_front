@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- 필수 -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!--  Jquery  UI (js 파일(함수) , css 파일)  -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+	<link rel="stylesheet"
+		href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+			$(document).ready(function(){
+						$('#datepicker').datepicker(
+							{
+								dateFormat: "yy-mm-dd",
+								//numberOfMonths: 2 //한번에 보여지는 달력의 개수 (만약 2입력시 2개의 달력이 한번에 뜬다)
+								onSelect: function(date){alert("onSelect: " + date);}, //이벤트 제어 (날짜 선택시 값 전달)
+								// 함수의 파라미터로 내가 선택한 날짜가 들어간다. 
+								onClose: function(date){ //창이 닫힐 때 값 전달
+									console.log(typeof(date)); // 타입: String
+									let currentdate = $('#datepicker').datepicker('getDate');
+									console.log(typeof(currentdate)); // 타입: Object
+									let date2 = new Date(currentdate);
+									alert(date2.getFullYear() + " / " + date2.getDate()); // 타입이 Object이므로 변형 가능
+								}
+							}		
+						);				
+				  } );
+	</script>
+</head>
+<body>
+	<p>
+		Date : <input type="text" id="datepicker">
+	</p>
+
+</body>
+</html>
