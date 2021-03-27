@@ -37,21 +37,21 @@ function drop(e) {
 
 // 해당 미모지가 드랍박스에 드랍될 때 띄울 SweetAlert실행
 function mhc() {
-    swal("‘난 코딩이 안 될 때면 하늘을 봐’ 하늘에서 코드를 받는 남자 문.형.철")
+    location.href="http://192.168.0.62:8090/Hw02/index.html";
 }
 
 function bsh() {
-    swal("모른다면서요.... 모른다면서 다 할 줄 아는 4조의 아수라백작! 박선희")
+    location.href="http://192.168.0.58:8080/BootStrap/index.html";
 }
 
 function bbs() {
-    swal("부드러움 속에 강한 추진력. MacBook같은 남자, 백보성")
+    location.href="http://192.168.0.50:8090/MyPage/index.html";
 }
 
 function hjs() {
-    swal("자는거 아니야 눈 감고 생각한거야.’ 생각할 때 코고는 남자, 하준수")
+    location.href="http://192.168.0.25:8090/Bootstrap/index.html.html";
 }
 
 function ain() {
-    swal("그녀의 미간과 눈썹이 찡그려질 때마다 기가 막힌 코드가 나와요 제가 봤어요. 4조의 장인 정아인")
+    location.href="http://192.168.0.54:8090/Hw02_Ain/index.html";
 }
