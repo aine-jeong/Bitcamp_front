@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	/* 
+	 1. XMLHttpRequest 객체 얻기
+	 2. onreadystatechange 이벤트 핸들러 구현 (함수)
+	 3. 요청 정보 ( open() )
+	 4. 요청 보내기 (send() )
+	 5. 응답 처리 (Text(JSON), xml)
+	*/
+	
+	var httpReq = null;
+	
+		function getInstance() {
+			if (window.XMLHttpRequest) { //만약 window객체가 XMLHttpRequest를 가지고있다면
+				httpReq = new XMLHttpRequest(); //현재 브라우져 XMLHttpRequest 내장 (xhr객체가 주소를 갖도록함)
+			} else if (window.ActiveXObject) { //IE6 이하 -> 이제 필요없는 코드 (거의 없으니까 ..)
+				httpReq = new ActiveXObject("Msxml2.XMLHTTP");
+			} else { //위의 if 둘다 해당되지 않는다면 비동기 불가능
+				throw new Error("AJAX 지원하지 않습니다"); //강제로 error 만들어서 던지기
+			}
+			return httpReq;
+		}
+
+		function handlerStateChage() {
+			//##POINT : readyState 의 값이 무슨 의미잉가??? ##
+			//1. 서버에서 응답이 왔다면
+			if(httpReq.readyState == 4) { 
+				//2. 서버가 클라이언트에 정상적인 응답을 보냈다면 (200~299)
+				if(httpReq.status >= 200 && httpReq.status < 300) {
+					document.getElementById("container").innerHTML = httpReq.responseText;
+					// httpReq.responseText; -> 서버가 보낸 데이터
+					
+				//정상건이 아닌 경우
+				} else {
+					alert("status Text : " + httpReq.status)
+				}
+			}
+		}
+
+		function sendData() {
+			httpReq = getInstance();
+			//readystatus가 바뀔때마다 자동호출시키기
+			httpReq.onreadystatechange = handlerStateChage; //() 없음 주의!!
+			httpReq.open("GET","Ex01_Server.html"); //form 태그 구성
+			httpReq.send(); //form 태그의 submit버튼 클릭한 것과 똑같은 것
+		}
+	</script>
+</head>
+<body>
+	<h3>update a web page without reloading the page</h3>
+	<img src="images/1.jpg" style="width: 150px;height: 150px">
+	
+	<!-- 전체 페이지의 로딩 없이 부분 페이지만 로딩 -->
+	<h3>비동기(Ajax) 요청 처리</h3>
+	<input type="button" value="비동기처리" onclick="sendData()">
+	<div id="container">First Data load .....</div>
+	
+	<h3>동기식 데이터 처리</h3>
+	<a href="Ex01_Server.html">데이터 요청(동기식으로...)</a>
+</body>
+</html>
