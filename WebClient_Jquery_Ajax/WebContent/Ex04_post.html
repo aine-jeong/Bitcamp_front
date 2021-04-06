@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+	/* 
+		1. bad
+		> Ex04_Server.jsp?name=hong&pwd=1004
+		
+		2. SoSo
+		> let name = $('#name').val();
+		> let pwd = $('#pwd').val();
+		> let param = 'name='+name+'$pwd='+pwd;
+		> $.post("Ex04_Server.jsp", param ,function(responsedata) {})
+		
+		3. Good (JSON객체로 파라미터 만들기 (유지보수, 가독성의 측면에서 좋음))
+		> const data = { "name":$('#name').val() , "pwd":$('#pwd').val()}
+		> $.post("Ex04_Server.jsp", data ,function(responsedata) {})
+	
+	*/
+	
+		$(function() {
+			$('#btn').click(function(){
+				const data = { "name":$('#name').val() , "pwd":$('#pwd').val()}
+				$.post("Ex04_Server.jsp", data ,function(responsedata){
+					$('#message').html(responsedata);
+				});
+				
+			})
+		});
+	</script>
+</head>
+<body>
+<!-- 비동기일 때는 name속성이 아니여도 된다 -->
+	이름: <input type="text" id="name"><br>
+	비밀번호: <input type="text" id="pwd"><br>
+	<input type="button" id="btn" value="비동기 전송">
+	<hr>
+	<div id="message"></div>
+	
+</body>
+</html>

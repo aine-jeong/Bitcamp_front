@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	/* 
+		jQuery.get( url [, data ] [, success ] [, dataType ] )
+		전송방식 GET >> open("GET")
+	*/
+	
+		$(function(){
+			$('#btn').click(function(){
+				//비동기함수 $.get 써보기
+				$.get("Ex03_Company.xml", function(data){
+					//응답이왔고, 정상이라면
+					console.log(data);
+					
+					//여기부터는 비동기가 아니고 Jquery 복습
+					$('#display').empty(); //자식요소 제거
+					console.log($(data).find('Company'));
+					//find 함수 > Array를 return해줬다!
+					
+					//$().each(function(index.element){})
+					$(data).find('Company').each(function(){
+						//학습목적으로 this를 사용합시다
+						//console.log(this);
+						let entry = $(this);
+						
+						/*  
+						>> entry
+						<Company CompanyType="private">
+							<CompanyName>Bit</CompanyName>
+							<CompanyNumber>2019</CompanyNumber>
+							<CompanyAddress>서울시 서초구</CompanyAddress>
+							<Name></Name>
+						</Company>
+						*/
+						
+						//그냥 이렇게 써도 된당..
+						//let html = "<div>" + $(this).attr('CompanyType') + "</div>";
+						let html = "<div>" + entry.attr('CompanyType') + "</div>";
+						 html += "<div>" +  entry.find('CompanyName').text() + "</div>";
+						 html += "<div>" +  entry.find('CompanyNumber').text() + "</div>";
+						 html += "<div>" +  entry.find('CompanyAddress').text()+ "</div>";
+						 html += "<div>" +  entry.find('Name').text()+ "</div>";
+							
+						$('#display').append(html);
+						
+					});
+				});
+			});
+		});
+	
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="회사소개">
+	<div id="display" style="background: gray">
+		DATA
+	</div>
+</body>
+</html>

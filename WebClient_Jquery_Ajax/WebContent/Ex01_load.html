@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	/* 
+		Jqeury가 제공하는 비동기 함수(Ajax) 학습
+		https://api.jquery.com/category/ajax/
+		https://www.w3schools.com/js/js_ajax_http.asp
+			
+		Jquery의 비동기함수는 내부적으로 XmlHttpRequest를 사용한다
+		
+		Ajax
+		Global Ajax Event Handlers
+		Helper Functions
+		Low-Level Interface : 모든 옵션을 개발자가 제어한다 >> $.ajex()
+		Shorthand Methods   : 기본 옵션을 가지고있는 함수 >> load(), get()
+		
+		$( "#result" ).load( "ajax/test.html" );
+		>> #result 가 가지는 특정 장소에다가 리턴해준다 (어떤 선택자를 지정해두면 받은 결과를 넣어준다)
+		.load( url [, data ] [, complete ] )
+		Description: Load data from the server and place the returned HTML into the matched elements.
+		설명: 서버에서 데이터를 로드하고 반환된 HTML을 일치하는 요소에 배치합니다.
+		
+		[url]
+		Type: String
+		A string containing the URL to which the request is sent.
+		요청을 보낼 URL을 포함하는 문자열입니다.
+		
+		[data] >> 객체(JSON 객체)
+		Type: PlainObject or String
+		A plain object or string that is sent to the server with the request.
+		요청과 함께 서버로 전송되는 일반 개체 또는 문자열입니다.
+		
+		[complete] >> (서버가 클라이언트에게 응답한 데이터, 서버가 보낸 상태 정보, XMLHttpRequest객체의 주소)
+		Type: Function( String responseText, String textStatus, jqXHR jqXHR )
+		A callback function that is executed when the request completes.
+		요청이 완료될 때 실행되는 콜백 함수입니다.
+		
+		load함수
+		1. 서버에서 받은 데이터 (html,xml)
+		2. 클라이언트가 정한 특정 요소에 자동으로 매핑할 목적 (자동 innerHTML)
+	
+		[data] 두번째 parameter 설정
+		hsp?msg=hello
+		>> 얘를 직접 작성해주는 것이 아니라 객체로 만든다 (JSON)
+		{name:"ain", age:100}
+		위와 같이 만들어주면
+		?name=ain&age=100 이렇게 만들어져서 넘어간당!!
+				
+		callback함수: 개발자의 의도가 아니라 프로그램 논리에 의해서 호출되는 함수
+	*/
+	
+		$(function(){
+			$('#btn').click(function(){
+				//$('#display').load("Ex01_Server_Date.jsp"); //Simple한 비동기처리!
+				$('#display').load("Ex01_Server_Date.jsp", {"msg":$('#msg2').val()}, 
+					function(responseText, textStatus, xhr) {
+						//해당 함수는 응답이 오면 호출된다 (즉, readyState가 4일 때!)
+						//responseText: 서버가 응답한 결과물 (html, text)
+						//textStatus -> success, fail (숫자에 매핑되는 문자값이 넘어온다)
+						
+						if(textStatus == "success"){
+							//readyState가 4이고, Status code가 200번대라면!
+							console.log("responseText: " + responseText);
+						}else {
+							//readyState가 4이지만 Status code가 404, 500등 정상이 아님
+							console.log("response fail: " + xhr.status + ", "+xhr.statusText);
+						}
+				});
+			});
+		})
+		
+	</script>
+</head>
+<body>
+	<h3>동기처리</h3>
+	<div>
+		<form action="Ex01_Server_Date.jsp" method="get">
+			<input type="text" name="msg" id="msg">
+			<input type="submit" value="동기전송">
+		</form>
+	</div>
+	<hr>
+	<h3>비동기처리</h3>
+	<input type="text" name="msg2" id="msg2">
+	<input type="button" id="btn" value="비동기전송">
+	
+	<div id="display"></div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		#menudiv {
+			width: 300px;
+			height: 300px;
+			float: left;
+			margin: 3px;
+			background-color: gold;
+		}
+	</style>
+	<script type="text/javascript">
+		/* 
+		low-level interface 비동기함수 (jquery.ajax(), $.ajax())
+		&.ajax(url,[settings]);
+		
+		API문서를 통해서 작업!
+		https://api.jquery.com/jQuery.ajax/
+		
+		url: 요청주소
+		[settings] >> 여러개의 옵션 >> { json 객체 }
+		
+		- 옵션
+		dataType: 서버가 클라이언트에게 응답하는 데이터의 형식을 정의한다.
+			> Text  : json, script, html, text (responseText)
+			> xml	: xml (responsXml)
+		*/
+		$(function(){
+			$('#message').click(function(){
+				//비동기함수 호출
+				$.ajax(
+						{
+							url: "Ex02_Server_menu.html",
+							dataType: "html", //서버가 응답하는 데이터 형식 정의
+							success: function(responsedata){ // (1)데이터 받아서
+								//responsedata: 서버가 클라이언트에게 응답한 데이터
+								//여기로 온다는 것은 서버에서 응답이 왔고, 그 응답이 정상이라는 것!
+								//$('#menudiv').html(responsedata); // (2)덮어버리기
+								
+								//서버가 클라이언트에게 응답한 데이터 중 li함수만 찾아서 menudiv에 넣기
+								$('#menudiv').html($(responsedata).find('li'));
+							}
+						}
+					);
+				
+			});
+		});
+	</script>
+</head>
+<body>
+		<div id="menudiv">
+			<a href="#" id="menu1"></a>
+		</div>
+		<span id="message">클릭하세요</span>
+</body>
+</html>
