@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	/* Javascript 샘플 코드 */
+
+
+	var xhr = new XMLHttpRequest();
+	var url = 'http://apis.data.go.kr/1360000/TourStnInfoService/getTourStnVilageFcst'; /*URL*/
+	var queryParams = '?' + encodeURIComponent('ServiceKey') + '='+'서비스키'; /*Service Key*/
+	queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+	queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+	queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('XML'); /**/
+	queryParams += '&' + encodeURIComponent('CURRENT_DATE') + '=' + encodeURIComponent('2019122010'); /**/
+	queryParams += '&' + encodeURIComponent('HOUR') + '=' + encodeURIComponent('24'); /**/
+	queryParams += '&' + encodeURIComponent('COURSE_ID') + '=' + encodeURIComponent('1'); /**/
+	xhr.open('GET', url + queryParams);
+	xhr.onreadystatechange = function () {
+	    if (this.readyState == 4) {
+	        alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+	    }
+	};
+
+	xhr.send('');
+	
+	</script>
+</head>
+<body>
+
+</body>
+</html>

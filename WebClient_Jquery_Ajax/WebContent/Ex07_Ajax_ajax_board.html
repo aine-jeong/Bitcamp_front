@@ -31,14 +31,17 @@
 														$('#treedata').append(obj.id + "/" + obj.name + "/" + obj.title + "/"+obj.content + "<br>");
 												});
 						},
-						error:function(xhr){
+						error:function(xhr){ // 서버가 응답한 건이 정상이 아니라면 요기를
 							alert(xhr.status); //404 , 500
 						}
+						//readyState가 3번 (데이터가 오는 중!)
 						,beforeSend:function(){  //readyState ==3 (서버 데이터가 오는 도중)
 				       							 //(이미지 보여주기 처리)
 				       							alert("beforeSend");
 				        						$('.wrap-loading').removeClass('display-none');
 					    }
+						//위의 작업이 모두 완료됐으면
+						//순서는 beforeSend -> success -> complete
 				    	,complete:function(){
 					        					//(이미지 감추기 처리)
 					        					alert("complete");
@@ -51,6 +54,7 @@
 	</script>
 </head>
 <body>
+<!--  https://loading.io/ -->
 <div class="wrap-loading display-none">
     <div><img src="https://tistory2.daumcdn.net/tistory/1898109/skin/images/Spinner.gif" /></div>
 </div>

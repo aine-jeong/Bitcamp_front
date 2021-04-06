@@ -83,22 +83,23 @@ $(function(){
 				console.log(data);
 				
 				$.each(data.LOCALDATA_031303_GN.row, function(index, obj) {
-					console.log(obj.DTLSTATENM);
-					if (obj[index].TRDSTATEGBN == '01') {
-						if (obj[index].SITEWHLADDR.indexOf('청담동') >= 0) {
-							chungd.push(obj[index]);
+					console.log(obj.TRDSTATEGBN);
+					if (obj.TRDSTATEGBN == '01') {
+						//indexOf : 위치를 알려주고, 값이 없다면 -1 반환
+						if (obj.SITEWHLADDR.indexOf('청담동') >= 0) {
+							chungd.push(obj);
 						}
-						if (obj[index].SITEWHLADDR.indexOf('논현동') >= 0) {
-							nonhy.push(obj[index]);
+						if (obj.SITEWHLADDR.indexOf('논현동') >= 0) {
+							nonhy.push(obj);
 						}
-						if (obj[index].SITEWHLADDR.indexOf('대치동') >= 0) {
-							daech.push(obj[index]);
+						if (obj.SITEWHLADDR.indexOf('대치동') >= 0) {
+							daech.push(obj);
 						}
-						if (obj[index].SITEWHLADDR.indexOf('역삼동') >= 0) {
-							yeok3.push(obj[index]);
+						if (obj.SITEWHLADDR.indexOf('역삼동') >= 0) {
+							yeok3.push(obj);
 						}
-						if (obj[index].SITEWHLADDR.indexOf('신사동') >= 0) {
-							sinsa.push(obj[index]);
+						if (obj.SITEWHLADDR.indexOf('신사동') >= 0) {
+							sinsa.push(obj);
 						}
 					}
 				});
@@ -143,50 +144,6 @@ $(function(){
 		}
 		
 	});
-	
-/* 	var request = new XMLHttpRequest();
-	request.open('GET', requestURL);
-	request.responseType = 'json';
-	request.send();
-	request.onload = function() {
-		var superHeroes = request.response.LOCALDATA_031303_GN;
-		var row = superHeroes.row;
-		// 영업중인 곳
-		// 청담동
-		var chungd = [];
-		// 논현동
-		var nonhy = [];
-		// 대치동
-		var daech = [];
-		// 역삼
-		var yeok3 = [];
-		// 신사
-		var sinsa = [];
-		for ( let index in row) {
-				if (row[index].TRDSTATEGBN == '01') {
-					if (row[index].SITEWHLADDR.indexOf('청담동') >= 0) {
-						chungd.push(row[index]);
-					}
-					if (row[index].SITEWHLADDR.indexOf('논현동') >= 0) {
-						nonhy.push(row[index]);
-					}
-					if (row[index].SITEWHLADDR.indexOf('대치동') >= 0) {
-						daech.push(row[index]);
-					}
-					if (row[index].SITEWHLADDR.indexOf('역삼동') >= 0) {
-						yeok3.push(row[index]);
-					}
-					if (row[index].SITEWHLADDR.indexOf('신사동') >= 0) {
-						sinsa.push(row[index]);
-					}
-				}
-			}
-			
-			document.getElementById("chungd").appendChild(createTable(chungd));
-			document.getElementById("nonhy").appendChild(createTable(nonhy));
-			document.getElementById("daech").appendChild(createTable(daech));
-			document.getElementById("yeok3").appendChild(createTable(yeok3));
-			document.getElementById("sinsa").appendChild(createTable(sinsa)); */
 	
 </script>
 </html>

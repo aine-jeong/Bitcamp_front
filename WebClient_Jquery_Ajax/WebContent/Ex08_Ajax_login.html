@@ -21,13 +21,46 @@
 	*/
 	$(function(){
 		$('#login').click(function(){
+			const actionurl = $('#form1').attr("action"); //클릭하면 form태그의 action값을 가져옴
+			//actionurl >> Ex08_Ajax_loginOk.jsp 
+			// # val, text, html 메소드 다시보기
 			
+			//변수를 만들어서 JSON 미리 만들어두고 AJAX할 때 사용하는게 예뻐용
+			let form_data = {user_id: $('#user_id').val(), user_pwd: $('#user_pw').val()};
+			
+			//비동기함수
+			$.ajax(
+				{
+					url: actionurl,
+					type: "POST",
+					dataType: "html", //서버가 클라이언트에게 응답하는 형식
+					data: form_data,
+					success: function(responsedata){ //파라미터 변수의 이름은 상관 없음 (그냥 알아보기 쉽게 써둔 것)
+						console.log(">" + responsedata + "<");
+						//>
+						//
+						//success<
+						//콘솔에 찍어본 결과 앞에 공백이 나온당 ............!!!! (값 비교할 때 문제 생길 수 있음 so, 꼭 값 뽑아서 확인해야함)
+						let result = responsedata.trim(); //공백 제거
+						if(result == 'success') {
+							$('#message').html("<p style='color:green; font-weight:bold'>로그인 성공</p>");
+						}else { 
+							//응답이 fail문자가 왔을 때 요기
+							$('#message').html("<p style='color:red; font-weight:bold'>로그인실패</p>");
+						}
+					},
+					error: function(xhr){ //문제가 생긴 xml 객체를 받을 수 있다.
+						console.log(xhr.status);
+					}
+				}	
+			);
 			
 		});	
 	});
 	</script>
 </head>
 <body>
+	<!-- 비동기는 form태그 굳이 안써도 댄당 -->
 	<form id="form1" name="form1" action="Ex08_Ajax_loginOk.jsp" method="post">
 		<table>
 			<tr>
