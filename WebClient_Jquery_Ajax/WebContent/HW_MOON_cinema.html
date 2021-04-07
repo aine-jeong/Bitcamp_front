@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title >오늘의 영화</title>
+<link>
+<link rel="stylesheet" type="text/css" href="css/Cinema.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	const key = "f5eef3421c602c6cb7ea224104795888";
+	// key=${key}&targetDt=20210405
+	const requestUrl = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?";
+	
+	var movie;
+	
+	var rankList;
+	var cinemaIndex = 0;
+	
+	$(function() {
+		
+		$('#calendar').change(function() {
+			var date = $(this).val().trim().replaceAll("-", "");
+
+			var form_data = {
+					key: key,
+					targetDt: date
+			}
+			
+			$.ajax(
+				{
+					url: requestUrl,
+					method: "get",
+					data: form_data,
+					success: (responseData) => {
+						// 첨부터 json으로 온다...
+						rankList = responseData.boxOfficeResult.dailyBoxOfficeList;
+						setInfo();
+					},
+					error:function(xhr) {
+						alert(xhr.status); //404 , 500
+					},
+					beforeSend:function() {  //readyState ==3 (서버 데이터가 오는 도중)
+						$('.wrap-loading').removeClass('display-none');
+					},
+					complete:function() {
+   					//(이미지 감추기 처리)
+   						$('.wrap-loading').addClass('display-none');
+	 				}
+				}
+				
+			);
+			
+		}); // id=calendar change event end
+		
+		document.getElementById("prv").onclick = function(){
+			if(cinemaIndex == 0){
+				cinemaIndex = rankList.length;
+			}
+			--cinemaIndex;
+			setInfo();
+		}
+		
+		document.getElementById("next").onclick = function(){
+			if(++cinemaIndex == rankList.length){
+				cinemaIndex=0;
+			}
+			setInfo();
+		}
+		
+	}); // document.onload event end
+	
+	function setInfo() {
+		document.getElementById("h1-rank").innerHTML = rankList[cinemaIndex].rank+"위";
+		//document.getElementById("poster").src = rankList[cinemaIndex].route;
+		document.getElementById("movieTitle").innerHTML = "<b><"+rankList[cinemaIndex].movieNm+"></b>";
+		document.getElementById("views").innerHTML = "<i>"+rankList[cinemaIndex].openDt+"에 개봉해서<br>"+rankList[cinemaIndex].audiAcc+"명의 관객이 함께했습니다.</i>";
+	}
+	
+</script>
+</head>
+<body>
+	
+	<!-- 웹페이지를 감싸는 부분, 인덱스 페이지 -->
+	<div class="wrapper indexPage">
+	<div class="wrap-loading display-none md_overlay">
+		<div><img class="div-loading-image" src="https://tistory2.daumcdn.net/tistory/1898109/skin/images/Spinner.gif" /></div>
+	</div>
+
+		<!-- 메인섹션 -->
+		<div class="mainSection">
+			<h1 id="h1-rank">1위</h1>
+			<!-- 캘린더입력 -->
+			<div  class="PosterContainer">
+				<input type="date" id="calendar">
+			</div>
+
+			<!-- 하단 영화정보 부분 -->
+			<div class="bottomInfo">
+				<div id="movieTitle" class="cinemaTitle"><b><미나리></b></div>
+				<div id="views" class="dateNview"><i>2021-03-03에 개봉해서<br>551837명의 관객이 함께했습니다.</i></div>
+				<div class="nextprv">
+				<!-- 버튼 부분 -->
+					<button id="prv" class ="prv" style="width: 100px; height:44px">이전</button>
+					<button id="next" class ="next" style="width: 100px; height:44px">다음</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+<style>
+.md_overlay {
+	background-color: rgba(0, 0, 0, 0.6);
+	top: 0px;
+	left: 0px;
+	width: 100vh; 
+	height: 100vh;
+	position: absolute;
+}
+
+.div-loading-image {
+	margin: 0;
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+</style>
+</html>

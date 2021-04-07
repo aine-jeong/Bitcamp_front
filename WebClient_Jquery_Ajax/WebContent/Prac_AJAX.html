@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	/* 
+	JQuery가 제공하는 AJAX 메소드
+	
+	$.ajax()	비동기식 Ajax를 이용하여 HTTP 요청을 전송함.
+	$.get()	전달받은 주소로 GET 방식의 HTTP 요청을 전송함.
+	$.post()	전달받은 주소로 POST 방식의 HTTP 요청을 전송함.
+	$.getScript()	웹 페이지에 스크립트를 추가함.
+	$.getJSON()	전달받은 주소로 GET 방식의 HTTP 요청을 전송하여, 응답으로 JSON 파일을 전송받음.
+	.load()	서버에서 데이터를 읽은 후, 읽어 들인 HTML 코드를 선택한 요소에 배치함.
+	
+	
+	
+	*/
+	$(function() {
+		$('#search').click(function() {
+			
+		
+		 $.ajax({
+			 method: "GET",
+	            url: "https://dapi.kakao.com/v3/search/book?target=title",
+	            data: { query : "미움받을용기" },
+	            headers : {Authorization: "8d4e198566f9c8717714ea32447d613e"}
+         })
+         	.done(function (msg){
+         		console.log(msg);
+         	});
+	  
+		})
+	  
+	});
+	
+	</script>
+</head>
+<body>
+	<h3>책 제목을 검색해주세요.</h3>
+	<input type="text" id="bookName" value="책제목">
+	<button id="search">검색</button>
+</body>
+</html>
